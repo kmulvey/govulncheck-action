@@ -20,11 +20,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Run action
 
       # Put your action repo here
-      uses: kmulvey/govulncheck-action@latest
+      uses: kmulvey/govulncheck-action@main
 
       # Put an example of your mandatory inputs here
       with:
