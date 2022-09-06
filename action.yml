@@ -1,13 +1,22 @@
-name: "Go Container Action Template"
-description: "Get started with Go Container actions"
-author: "Jacob Tomlinson"
+name: "Govulncheck Action"
+description: "Run Go vulerability checker"
+author: "Kevin Mulvey"
 inputs:
-  myInput:
-    description: "Input to use"
-    default: "world"
-outputs:
-  myOutput:
-    description: "Output from the action"
+  packages:
+    description: 'Run govulncheck on these packages.'
+    required: false
+    default: './...'
 runs:
-  using: "docker"
-  image: "Dockerfile"
+  using: 'composite'
+  steps:
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v3
+    - name: Set up Go 
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.19
+      id: go
+    - name: Get govulncheck
+      run: go install golang.org/x/vuln/cmd/govulncheck@latest
+    - name: Run govulncheck
+      run: govulncheck ${{ inputs.package }}
