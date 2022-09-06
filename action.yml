@@ -20,7 +20,7 @@ runs:
       run: go install golang.org/x/vuln/cmd/govulncheck@latest
       shell: bash
     - name: Run govulncheck
-      run: govulncheck ${{ inputs.package }}
+      run: govulncheck ${{ inputs.packages }}
       shell: bash
 
 branding:
