@@ -1,3 +1,3 @@
 module github.com/kmulvey/govulncheck-action
 
-go 1.19
+go 1.20
